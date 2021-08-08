@@ -16,6 +16,10 @@ end
 
 function love.draw()
     Map.level:draw(0,0,2,2)
+
+    love.graphics.push()
+    love.graphics.scale(2,2)
     Car:draw()
+    love.graphics.pop()
     --Map.level:draw(-Camera.x, -Camera.y, Camera.scale, Camera.scale)
 end
