@@ -92,6 +92,8 @@ function Player:move(dt)
 
  function Player:syncPhysics()
     self.x, self.y = self.physics.body:getPosition()
+    self.x = math.floor(self.x)
+    self.y = math.floor(self.y)
     self.physics.body:setLinearVelocity(self.xVel, self.yVel)
 end
 

@@ -36,7 +36,54 @@ return {
       properties = {},
       wangsets = {},
       tilecount = 32,
-      tiles = {}
+      tiles = {
+        {
+          id = 0,
+          type = "Road",
+          properties = {
+            ["direction"] = "horizontal"
+          }
+        },
+        {
+          id = 1,
+          type = "Road"
+        },
+        {
+          id = 2,
+          type = "Road",
+          properties = {
+            ["direction"] = "tdown"
+          }
+        },
+        {
+          id = 3,
+          type = "Road",
+          properties = {
+            ["direction"] = "crossroad"
+          }
+        },
+        {
+          id = 4,
+          type = "Road",
+          properties = {
+            ["direction"] = "horizontal"
+          }
+        },
+        {
+          id = 5,
+          type = "Road",
+          properties = {
+            ["direction"] = "vertical"
+          }
+        },
+        {
+          id = 6,
+          type = "Road",
+          properties = {
+            ["direction"] = "all"
+          }
+        }
+      }
     }
   },
   layers = {
@@ -47,7 +94,7 @@ return {
       width = 42,
       height = 42,
       id = 1,
-      name = "Tile Layer 1",
+      name = "ground",
       visible = true,
       opacity = 1,
       offsetx = 0,

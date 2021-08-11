@@ -5,6 +5,37 @@
  </editorsettings>
  <tileset firstgid="1" name="big_map" tilewidth="32" tileheight="32" tilecount="32" columns="4">
   <image source="../../../../../../Volumes/Extreme SSD/Projects/miniZombieInc/asset/big_map.png" width="128" height="256"/>
+  <tile id="0" type="Road">
+   <properties>
+    <property name="direction" value="horizontal"/>
+   </properties>
+  </tile>
+  <tile id="1" type="Road"/>
+  <tile id="2" type="Road">
+   <properties>
+    <property name="direction" value="tdown"/>
+   </properties>
+  </tile>
+  <tile id="3" type="Road">
+   <properties>
+    <property name="direction" value="crossroad"/>
+   </properties>
+  </tile>
+  <tile id="4" type="Road">
+   <properties>
+    <property name="direction" value="horizontal"/>
+   </properties>
+  </tile>
+  <tile id="5" type="Road">
+   <properties>
+    <property name="direction" value="vertical"/>
+   </properties>
+  </tile>
+  <tile id="6" type="Road">
+   <properties>
+    <property name="direction" value="all"/>
+   </properties>
+  </tile>
  </tileset>
  <layer id="1" name="ground" width="42" height="42">
   <data encoding="csv">
