@@ -3,7 +3,7 @@ local STI = require("src/sti")
 
 
 function Map:load()
-    self.currentLevel = "big_map"
+    self.currentLevel = "1"
     World = love.physics.newWorld(0,2000)
     World:setCallbacks(beginContact, endContact)
     self:init()
