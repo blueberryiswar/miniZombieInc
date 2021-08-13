@@ -4,6 +4,8 @@ local STI = require("src/sti")
 
 function Map:load()
     self.currentLevel = "1"
+    self.heightLimit = 0
+    self.widthLimit = 0
     World = love.physics.newWorld(0,2000)
     World:setCallbacks(beginContact, endContact)
     self:init()
@@ -14,7 +16,8 @@ function Map:init()
     self.level = STI("map/"..self.currentLevel..".lua", {"box2d"})
     self.level:box2d_init(World)
     self.level.layers.solid.visible = false
-    
+    self.widthLimit = self.rawMap.tilewidth * self.rawMap.width
+    self.heightLimit = self.rawMap.tileheight * self.rawMap.height
 end
 
 function Map:next()
