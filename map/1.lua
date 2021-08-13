@@ -9,7 +9,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 5,
-  nextobjectid = 19,
+  nextobjectid = 21,
   properties = {},
   tilesets = {
     {
@@ -120,8 +120,8 @@ return {
           name = "Player",
           type = "player",
           shape = "point",
-          x = 47.3848,
-          y = 88.2247,
+          x = 48,
+          y = 80,
           width = 0,
           height = 0,
           rotation = 0,
@@ -340,12 +340,12 @@ return {
           }
         },
         {
-          id = 9,
+          id = 19,
           name = "",
           type = "collider",
           shape = "rectangle",
-          x = 581.314,
-          y = 353.553,
+          x = 583.01,
+          y = 350.351,
           width = 21.7289,
           height = 28.5356,
           rotation = 0,
