@@ -235,15 +235,6 @@ function Police:avoid(collision)
     elseif self.direction == "right" then
         self.direction = "left"
     end
-    --if self.x > collision.x then
-    --    self.xVel = self.xVel - 10
-    --elseif self.x < collision.x then
-    --   self.xVel = self.xVel + 10
-    --elseif self.y > collision.y then
-    --    self.yVel = self.yVel - 10
-    --elseif self.y < collision.y then
-    --    self.yVel = self.yVel + 10
-    --end
 end
 
 function Police:animate(dt)
