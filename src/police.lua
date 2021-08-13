@@ -280,9 +280,6 @@ end
 function Police.beginContact(a, b, collision)
     for i,instance in ipairs(ActivePolice) do
        if a == instance.physics.fixture or b == instance.physics.fixture then
-          if a == instance.Player.physics.fixture or b == instance.Player.physics.fixture then
-             Player:takeDamage(instance.damage)
-          end
           if a == instance.physics.fixture then
             instance:avoid(b)
           elseif b == instance.physics.fixture then

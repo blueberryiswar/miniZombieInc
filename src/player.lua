@@ -11,6 +11,7 @@ function Player:load()
     self.animation = {}
     self.acceleration = 120
     self.maxSpeed = 1000
+    self.alive = true
     self.scale = 1
     self.xVel = 0
     self.yVel = 0
@@ -67,6 +68,7 @@ function Player:update(dt)
     self:applyFriction(dt)
     self:animate(dt)
     self:syncPhysics()
+    self:respawn()
 end
 
 function Player:draw()
@@ -127,6 +129,14 @@ function Player:animate(dt)
     end
 end
 
+function Player:respawn()
+    if self.alive then return end
+    self.physics.body:setPosition(self.startX, self.startY)
+    self.x = self.startX
+    self.y = self.startY
+    self.alive = true
+end
+
 function Player:setNewFrame() 
     local anim = self.animation[self.state]
 
@@ -139,8 +149,22 @@ function Player:setNewFrame()
     self.animation.draw = anim.quad[anim.current]
 end
 
+function Player:beginContact(a, b, collision)
+    if math.abs(self.xVel) > 100 or math.abs(self.yVel) > 100 then
+        self:takeDamage()
+    end
+end
+
 function Player:takeDamage()
     print("boom")
+    Player:die()
+end
+
+function Player:die()
+    print("Player died")
+    self.alive = false
+    self.xVel = 0
+    self.yVel = 0
 end
  
 return Player

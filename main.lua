@@ -37,7 +37,7 @@ end
 
 function beginContact(a, b, collision)
     if Police.beginContact(a, b, collision) then return end
-    --Player:beginContact(a, b, collision)
+    Player:beginContact(a, b, collision)
 end
 
 function endContact(a, b, collision)
