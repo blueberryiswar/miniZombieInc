@@ -13,6 +13,7 @@ function Map:init()
     self.rawMap = require("map/"..self.currentLevel)
     self.level = STI("map/"..self.currentLevel..".lua", {"box2d"})
     self.level:box2d_init(World)
+    self.level.layers.solid.visible = false
     
 end
 
@@ -23,11 +24,11 @@ function Map:next()
 end
 
 function Map:getTile(ox, oy, x, y)
-    local posx = math.floor((x + ox) / self.rawMap.tilewidth)
-    local posy = math.floor((y + oy) / self.rawMap.tileheight)
-    local position = posy * self.rawMap.width + posx 
-    print("x:"..posx.."; y:"..posy.." - pos: "..position)
-    return self.rawMap.layers[1].data[position]
+    local posx = math.floor((x + ox) / (self.rawMap.tilewidth)) + 1
+    local posy = math.floor((y + oy) / (self.rawMap.tileheight)) + 1
+    local position = (posy - 1) * self.rawMap.width + posx 
+    --print("x:"..posx.."; y:"..posy.." - pos: "..position)
+    return ""..self.rawMap.layers[1].data[position].." Tilex: "..posx.." Tiley: "..posy
 end
 
 function Map:update()

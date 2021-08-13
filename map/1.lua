@@ -8,8 +8,8 @@ return {
   height = 12,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 4,
-  nextobjectid = 3,
+  nextlayerid = 5,
+  nextobjectid = 10,
   properties = {},
   tilesets = {
     {
@@ -22,7 +22,7 @@ return {
       columns = 4,
       image = "../asset/street.png",
       imagewidth = 128,
-      imageheight = 128,
+      imageheight = 224,
       objectalignment = "unspecified",
       tileoffset = {
         x = 0,
@@ -35,7 +35,7 @@ return {
       },
       properties = {},
       wangsets = {},
-      tilecount = 16,
+      tilecount = 28,
       tiles = {}
     }
   },
@@ -58,17 +58,48 @@ return {
       encoding = "lua",
       data = {
         6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-        6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-        6, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 6, 6,
-        6, 1, 6, 6, 7, 6, 6, 6, 6, 6, 6, 11, 6, 6, 6, 6, 6, 1, 6, 6,
-        6, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 6, 6, 6, 6, 6, 1, 6, 7,
-        6, 1, 6, 9, 11, 6, 6, 6, 6, 6, 6, 11, 6, 3, 6, 3, 6, 1, 6, 6,
-        6, 1, 6, 6, 6, 6, 2, 1, 1, 1, 6, 11, 6, 6, 6, 6, 6, 1, 7, 6,
-        6, 1, 6, 6, 6, 6, 6, 6, 2, 1, 6, 11, 6, 6, 6, 6, 8, 1, 6, 6,
-        6, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 11, 6, 7, 6, 6, 6, 1, 6, 6,
-        6, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 9, 6, 6, 1, 6, 6,
-        6, 4, 6, 5, 6, 3, 6, 10, 6, 11, 6, 6, 9, 6, 6, 6, 10, 4, 6, 8,
-        6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6
+        6, 14, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20, 16, 16, 16, 16, 16, 15, 6, 6,
+        6, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 6, 6, 6, 6, 6, 1, 6, 6,
+        6, 1, 6, 6, 7, 6, 6, 6, 6, 6, 6, 1, 6, 6, 6, 6, 6, 1, 6, 6,
+        6, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 6, 6, 6, 6, 6, 1, 6, 19,
+        6, 2, 16, 16, 16, 16, 20, 16, 16, 16, 16, 3, 16, 16, 20, 16, 16, 3, 16, 22,
+        6, 1, 6, 6, 6, 6, 1, 6, 6, 6, 6, 1, 6, 6, 1, 6, 6, 1, 7, 1,
+        6, 1, 6, 6, 6, 6, 1, 6, 6, 6, 6, 2, 16, 16, 3, 16, 16, 4, 6, 1,
+        6, 1, 6, 6, 6, 6, 18, 6, 6, 6, 6, 1, 6, 7, 1, 6, 6, 14, 16, 4,
+        6, 1, 6, 6, 6, 6, 6, 6, 6, 6, 6, 1, 6, 6, 1, 6, 6, 1, 6, 6,
+        6, 13, 16, 16, 16, 16, 16, 16, 20, 20, 16, 21, 16, 16, 21, 16, 16, 4, 6, 8,
+        6, 6, 6, 6, 6, 6, 6, 6, 10, 9, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6
+      }
+    },
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 20,
+      height = 12,
+      id = 4,
+      name = "decoration",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 24, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0
       }
     },
     {
@@ -117,10 +148,115 @@ return {
           name = "",
           type = "collider",
           shape = "rectangle",
-          x = 178.544,
-          y = 61.2599,
-          width = 100.529,
-          height = 80.1091,
+          x = 389.026,
+          y = 290.068,
+          width = 21.7289,
+          height = 28.5356,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 3,
+          name = "",
+          type = "collider",
+          shape = "rectangle",
+          x = 388.11,
+          y = 194.121,
+          width = 21.7289,
+          height = 28.5356,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 4,
+          name = "",
+          type = "collider",
+          shape = "rectangle",
+          x = 516.913,
+          y = 129.719,
+          width = 21.7289,
+          height = 28.5356,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 5,
+          name = "",
+          type = "collider",
+          shape = "rectangle",
+          x = 580.005,
+          y = 129.457,
+          width = 21.7289,
+          height = 28.5356,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 6,
+          name = "",
+          type = "collider",
+          shape = "rectangle",
+          x = 613.253,
+          y = 65.5795,
+          width = 21.7289,
+          height = 28.5356,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 7,
+          name = "",
+          type = "collider",
+          shape = "rectangle",
+          x = 292.293,
+          y = 65.3177,
+          width = 21.7289,
+          height = 28.5356,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 8,
+          name = "",
+          type = "collider",
+          shape = "rectangle",
+          x = 69.2446,
+          y = 224.75,
+          width = 21.7289,
+          height = 28.5356,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 9,
+          name = "",
+          type = "collider",
+          shape = "rectangle",
+          x = 581.314,
+          y = 353.553,
+          width = 21.7289,
+          height = 28.5356,
           rotation = 0,
           visible = true,
           properties = {

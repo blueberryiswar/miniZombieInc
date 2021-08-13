@@ -1,34 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="3">
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="10">
  <editorsettings>
   <export target="../1.lua" format="lua"/>
  </editorsettings>
- <tileset firstgid="1" name="street" tilewidth="32" tileheight="32" tilecount="16" columns="4">
-  <image source="../../asset/street.png" width="128" height="128"/>
+ <tileset firstgid="1" name="street" tilewidth="32" tileheight="32" tilecount="28" columns="4">
+  <image source="../../asset/street.png" width="128" height="224"/>
  </tileset>
  <layer id="1" name="ground" width="20" height="12">
   <data encoding="csv">
 6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
-6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
-6,1,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,1,6,6,
-6,1,6,6,7,6,6,6,6,6,6,11,6,6,6,6,6,1,6,6,
-6,1,6,6,6,6,6,6,6,6,6,11,6,6,6,6,6,1,6,7,
-6,1,6,9,11,6,6,6,6,6,6,11,6,3,6,3,6,1,6,6,
-6,1,6,6,6,6,2,1,1,1,6,11,6,6,6,6,6,1,7,6,
-6,1,6,6,6,6,6,6,2,1,6,11,6,6,6,6,8,1,6,6,
-6,1,6,6,6,6,6,6,6,6,6,11,6,7,6,6,6,1,6,6,
-6,1,6,6,6,6,6,6,6,6,6,6,6,6,9,6,6,1,6,6,
-6,4,6,5,6,3,6,10,6,11,6,6,9,6,6,6,10,4,6,8,
-6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6
+6,14,16,16,16,16,16,16,16,16,16,20,16,16,16,16,16,15,6,6,
+6,1,6,6,6,6,6,6,6,6,6,1,6,6,6,6,6,1,6,6,
+6,1,6,6,7,6,6,6,6,6,6,1,6,6,6,6,6,1,6,6,
+6,1,6,6,6,6,6,6,6,6,6,1,6,6,6,6,6,1,6,19,
+6,2,16,16,16,16,20,16,16,16,16,3,16,16,20,16,16,3,16,22,
+6,1,6,6,6,6,1,6,6,6,6,1,6,6,1,6,6,1,7,1,
+6,1,6,6,6,6,1,6,6,6,6,2,16,16,3,16,16,4,6,1,
+6,1,6,6,6,6,18,6,6,6,6,1,6,7,1,6,6,14,16,4,
+6,1,6,6,6,6,6,6,6,6,6,1,6,6,1,6,6,1,6,6,
+6,13,16,16,16,16,16,16,20,20,16,21,16,16,21,16,16,4,6,8,
+6,6,6,6,6,6,6,6,10,9,6,6,6,6,6,6,6,6,6,6
 </data>
  </layer>
- <objectgroup color="#ff0000" id="2" name="objects">
+ <layer id="4" name="decoration" width="20" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,23,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,24,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,
+0,0,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="2" name="objects">
   <object id="1" name="Player" type="player" x="47.3848" y="88.2247">
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="3" name="solid">
-  <object id="2" type="collider" x="178.544" y="61.2599" width="100.529" height="80.1091">
+ <objectgroup color="#ff0000" id="3" name="solid">
+  <object id="2" type="collider" x="389.026" y="290.068" width="21.7289" height="28.5356">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="3" type="collider" x="388.11" y="194.121" width="21.7289" height="28.5356">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="4" type="collider" x="516.913" y="129.719" width="21.7289" height="28.5356">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="5" type="collider" x="580.005" y="129.457" width="21.7289" height="28.5356">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="6" type="collider" x="613.253" y="65.5795" width="21.7289" height="28.5356">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="7" type="collider" x="292.293" y="65.3177" width="21.7289" height="28.5356">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="8" type="collider" x="69.2446" y="224.75" width="21.7289" height="28.5356">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="9" type="collider" x="581.314" y="353.553" width="21.7289" height="28.5356">
    <properties>
     <property name="collidable" type="bool" value="true"/>
    </properties>
