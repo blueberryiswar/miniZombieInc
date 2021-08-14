@@ -1,10 +1,12 @@
 local Player = {}
+local Remains = require("src/remains")
 
 function Player:load()
     self.x = 100
     self.y = 100
     self.startX = 0
     self.startY = 0
+    self.spawnTimer = 0
     self.img = love.graphics.newImage("asset/simple_car.png")
     self.height = 24
     self.width = 24
@@ -131,6 +133,7 @@ end
 
 function Player:respawn()
     if self.alive then return end
+    Remains.new(self.x, self.y, self.state, self.scaleX)
     self.physics.body:setPosition(self.startX, self.startY)
     self.x = self.startX
     self.y = self.startY
