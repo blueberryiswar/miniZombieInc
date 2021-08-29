@@ -142,31 +142,34 @@ end
 
 
 function Police:setRandomDirection(limit)
-    local i = math.random(10)
-    print("rolled "..i.." current direction "..self.direction)
+    
     if limit == "hori" then
-        if i < 5 then
+        local r = math.random(2)
+        if r == 1 then
             self.direction = "left"
         else
             self.direction = "right"
         end
     elseif limit == "vert" then
-        if i < 5 then
+        local r = math.random(2)
+        if r == 1 then
             self.direction = "up"
         else
             self.direction = "down"
         end
-    elseif limit == "cross" then 
-        if i < 2 and self.direction ~= "up" then
+    elseif limit == "cross" then
+        local r = math.random(4) 
+        print("rolled "..r.." current direction "..self.direction)
+        if r == 1 and self.direction ~= "up" then
             self.direction = "up"
-        elseif i < 5 and self.direction ~= "left" then
+        elseif r == 2 and self.direction ~= "left" then
             self.direction = "left"
-        elseif i < 8 and self.direction ~= "right" then
+        elseif r == 3 and self.direction ~= "right" then
             self.direction = "right"
-        elseif i <= 10 and self.direction ~= "down" then
+        elseif r == 4 and self.direction ~= "down" then
             self.direction = "down"
         else
-            print("rolled "..i.." current direction "..self.direction)
+            print("rolled "..r.." current direction "..self.direction)
         end
     end
     print(self.direction)
@@ -285,7 +288,8 @@ function Police.beginContact(a, b, collision)
           elseif b == instance.physics.fixture then
             instance:avoid(a)
           elseif b == Player.physics.fixture or a == Player.physics.fixutre then
-            Player:die()
+            Player:busted()
+            print("Police collision")
           end
           return true
        end

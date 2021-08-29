@@ -172,6 +172,13 @@ function Player:die()
     self.xVel = 0
     self.yVel = 0
 end
+
+function Player:busted()
+    print("Player catched")
+    self.alive = false
+    self.xVel = 0
+    self.yVel = 0
+end
  
 return Player
 
