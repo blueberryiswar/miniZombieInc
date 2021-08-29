@@ -1,9 +1,9 @@
 local inspect = require("dev/inspect")
+local Player = require("src/player")
 local Police = {
     img = love.graphics.newImage("asset/police_car.png"),
     width = 24,
     height = 24,
-    Player = require("src/Player")
 }
 Police.__index = Police
 local ActivePolice = {}
@@ -284,9 +284,13 @@ function Police.beginContact(a, b, collision)
             instance:avoid(b)
           elseif b == instance.physics.fixture then
             instance:avoid(a)
+          elseif b == Player.physics.fixture or a == Player.physics.fixutre then
+            Player:die()
           end
+          return true
        end
     end
+    return false
  end
 
 return Police

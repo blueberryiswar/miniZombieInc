@@ -78,6 +78,7 @@ function Player:draw()
 end
 
 function Player:move(dt)
+    if(math.abs(self.xVel) + math.abs(self.yVel) > self.maxSpeed) then return end
     if love.keyboard.isDown("d", "right") then
         self.xVel = math.min(self.xVel + self.acceleration * dt, self.maxSpeed)
         self.state = "driveHori"
