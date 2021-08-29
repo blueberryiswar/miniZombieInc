@@ -1,14 +1,19 @@
 local Player = {}
+local Remains = require("src/remains")
 
 function Player:load()
     self.x = 100
     self.y = 100
+    self.startX = 0
+    self.startY = 0
+    self.spawnTimer = 0
     self.img = love.graphics.newImage("asset/simple_car.png")
     self.height = 24
     self.width = 24
     self.animation = {}
-    self.acceleration = 100
-    self.maxSpeed = 800
+    self.acceleration = 120
+    self.maxSpeed = 1000
+    self.alive = true
     self.scale = 1
     self.xVel = 0
     self.yVel = 0
@@ -19,9 +24,10 @@ function Player:load()
     self.physics = {}
     self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
     self.physics.body:setFixedRotation(true)
-    self.physics.shape = love.physics.newRectangleShape(self.width, self.height)
+    self.physics.shape = love.physics.newRectangleShape(self.width - 20, self.height - 10)
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
     self.physics.body:setGravityScale(0)
+    self.physics.body:setMass(30)
 end
 
 function Player:loadAssets()
@@ -64,6 +70,7 @@ function Player:update(dt)
     self:applyFriction(dt)
     self:animate(dt)
     self:syncPhysics()
+    self:respawn()
 end
 
 function Player:draw()
@@ -97,6 +104,12 @@ function Player:move(dt)
     self.physics.body:setLinearVelocity(self.xVel, self.yVel)
 end
 
+function Player:setPosition(x, y)
+    self.startX = x 
+    self.startY = y
+    self.physics.body:setPosition(self.startX, self.startY)
+end
+
 function Player:applyFriction(dt)
     if self.xVel > 0 then
         self.xVel = math.max(self.xVel - self.friction * dt, 0)
@@ -118,6 +131,15 @@ function Player:animate(dt)
     end
 end
 
+function Player:respawn()
+    if self.alive then return end
+    Remains.new(self.x, self.y, self.state, self.scaleX)
+    self.physics.body:setPosition(self.startX, self.startY)
+    self.x = self.startX
+    self.y = self.startY
+    self.alive = true
+end
+
 function Player:setNewFrame() 
     local anim = self.animation[self.state]
 
@@ -130,6 +152,23 @@ function Player:setNewFrame()
     self.animation.draw = anim.quad[anim.current]
 end
 
+function Player:beginContact(a, b, collision)
+    if math.abs(self.xVel) > 100 or math.abs(self.yVel) > 100 then
+        self:takeDamage()
+    end
+end
+
+function Player:takeDamage()
+    print("boom")
+    Player:die()
+end
+
+function Player:die()
+    print("Player died")
+    self.alive = false
+    self.xVel = 0
+    self.yVel = 0
+end
  
 return Player
 
