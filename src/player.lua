@@ -24,7 +24,7 @@ function Player:load()
     self.physics = {}
     self.physics.body = love.physics.newBody(World, self.x, self.y, "dynamic")
     self.physics.body:setFixedRotation(true)
-    self.physics.shape = love.physics.newRectangleShape(self.width - 20, self.height - 10)
+    self.physics.shape = love.physics.newRectangleShape(self.width - 10, self.height -12)
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
     self.physics.body:setGravityScale(0)
     self.physics.body:setMass(30)
@@ -153,8 +153,10 @@ function Player:setNewFrame()
 end
 
 function Player:beginContact(a, b, collision)
-    if math.abs(self.xVel) > 100 or math.abs(self.yVel) > 100 then
-        self:takeDamage()
+    if a == self.physics.fixture or b == self.physics.fixture then
+        if math.abs(self.xVel) + math.abs(self.yVel) > 100 then
+            self:takeDamage()
+        end
     end
 end
 

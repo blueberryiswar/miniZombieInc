@@ -10,16 +10,20 @@ function Remains.new(x, y, state, scaleX)
     local instance = setmetatable({}, Remains)
     instance.x = x
     instance.y = y
+    instance.xVel = 0
+    instance.yVel = 0
     instance.r = 0
     instance.state = state
     instance.scaleX = scaleX
     instance.animation = {}
     instance.physics = {}
     instance.physics.body = love.physics.newBody(World, x, y, "dynamic")
-    instance.physics.shape = love.physics.newRectangleShape(instance.width, instance.height)
+    instance.physics.body:setFixedRotation(true)
+    instance.physics.shape = love.physics.newRectangleShape(Remains.width - 6, Remains.height -4)
     instance.physics.fixture = love.physics.newFixture(instance.physics.body, instance.physics.shape)
     instance.physics.body:setMass(25)
     instance.damage = 1
+    instance.friction = 80
     
     instance:loadAssets()
 
@@ -27,6 +31,7 @@ function Remains.new(x, y, state, scaleX)
 end
 
 function Remains:update(dt)
+    self:applyFriction(dt)
     self:syncPhysics()
     self:animate(dt)
 end
@@ -91,7 +96,21 @@ end
 
 function Remains:syncPhysics()
     self.x, self.y = self.physics.body:getPosition()
-    self.r = self.physics.body:getAngle()
+    self.physics.body:setLinearVelocity(self.xVel, self.yVel)
+end
+
+function Remains:applyFriction(dt)
+    self.xVel, self.yVel = self.physics.body:getLinearVelocity()
+    if self.xVel > 0 then
+        self.xVel = math.max(self.xVel - self.friction * dt, 0)
+    elseif self.xVel < 0 then
+        self.xVel = math.min(self.xVel + self.friction * dt, 0)
+    end
+    if self.yVel > 0 then
+        self.yVel = math.max(self.yVel - self.friction * dt, 0)
+    elseif self.yVel < 0 then
+        self.yVel = math.min(self.yVel + self.friction * dt, 0)
+    end
 end
 
 function Remains.drawAll()

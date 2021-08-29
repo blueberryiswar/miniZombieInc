@@ -1,6 +1,6 @@
 local inspect = require("dev/inspect")
 local Police = {
-    img = love.graphics.newImage("asset/simple_car.png"),
+    img = love.graphics.newImage("asset/police_car.png"),
     width = 24,
     height = 24,
     Player = require("src/Player")
@@ -12,8 +12,8 @@ function Police.new(x, y, Map)
     local instance = setmetatable({}, Police)
     instance.x = x
     instance.y = y
-    instance.height = 24
-    instance.width = 24
+    instance.height = 22
+    instance.width = 30
     instance.animation = {}
     instance.acceleration = 120
     instance.maxSpeed = 100
@@ -50,8 +50,8 @@ function Police:loadAssets()
 
     self.animation.driveUp = {total = 2, current = 1, quad = {}}    
     for i=1,self.animation.driveUp.total do
-        self.animation.driveUp.quad[i] = love.graphics.newQuad(self.width * (i + 1)
-        , 0
+        self.animation.driveUp.quad[i] = love.graphics.newQuad(self.width * (i - 1)
+        , self.height * 1
         , self.width
         , self.height
         , self.img:getDimensions())
@@ -59,8 +59,8 @@ function Police:loadAssets()
 
     self.animation.driveDown = {total = 2, current = 1, quad = {}}    
     for i=1,self.animation.driveDown.total do
-        self.animation.driveDown.quad[i] = love.graphics.newQuad(self.width * (i + 3)
-        , 0
+        self.animation.driveDown.quad[i] = love.graphics.newQuad(self.width * (i - 1)
+        , self.height * 2
         , self.width
         , self.height
         , self.img:getDimensions())
