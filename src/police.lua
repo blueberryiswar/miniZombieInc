@@ -92,7 +92,6 @@ function Police:move(dt)
     end
 
     if currentTile == 16 then -- hori straight road
-        print("horizontal start")
         if self.direction == "none" or self.direction == "up" or self.direction == "down" then
             self:setRandomDirection("hori")
         end
@@ -102,6 +101,14 @@ function Police:move(dt)
         end
     elseif currentTile == 3 then -- crossroad
         self:setRandomDirection("cross")
+    elseif currentTile == 2 then -- |-
+        self:setRandomDirection("t-right")
+    elseif currentTile == 20 then
+        self:setRandomDirection("t-down")
+    elseif currentTile == 21 then
+        self:setRandomDirection("t-up")
+    elseif currentTile == 22 then
+        self:setRandomDirection("t-left")
     elseif currentTile == 1 then
         if self.direction == "none" or self.direction == "left" or self.direction == "right" then
             self:setRandomDirection("vert")
@@ -131,30 +138,48 @@ function Police:move(dt)
             self.direction = "right"
         end
     elseif currentTile == 18 then -- end road down
-        self.direction = "up"
+        self:turnAround()
     elseif currentTile == 19 then -- end road up
-        self.direction = "down"
+        self:turnAround()
+    elseif currentTile == "out of bounds" then
+        self:turnAround()
     end
 
+    self:driveStraight(dt)
+
     self.lastTile = currentTile
-    print(self.direction)
 end
 
 
 function Police:setRandomDirection(limit)
-    
+    local r = math.random(2)
+    print("rolled: " .. r .. " for " .. limit)
     if limit == "hori" then
-        local r = math.random(2)
-        if r == 1 then
-            self.direction = "left"
-        else
+        self:leftOrRight(r)
+    elseif limit == "vert" then
+        self:upOrDown(r)
+    elseif limit == "t-right" then
+        if self.direction == "left" then
+            self:upOrDown(r)
+        elseif r == 1 then
             self.direction = "right"
         end
-    elseif limit == "vert" then
-        local r = math.random(2)
-        if r == 1 then
+    elseif limit == "t-left" then
+        if self.direction == "right" then
+            self:upOrDown(r)
+        elseif r == 1 then
+            self.direction = "left"
+        end
+    elseif limit == "t-up" then
+        if self.direction == "down" then
+            self:leftOrRight(r)
+        elseif r == 1 then
             self.direction = "up"
-        else
+        end
+    elseif limit == "t-down" then
+        if self.direction == "up" then
+            self:leftOrRight(r)
+        elseif r == 1 then
             self.direction = "down"
         end
     elseif limit == "cross" then
@@ -174,6 +199,35 @@ function Police:setRandomDirection(limit)
     end
     print(self.direction)
 end
+
+function Police:leftOrRight(r)
+    if r == 1 then
+        self.direction = "left"
+    else
+        self.direction = "right"
+    end
+end
+
+function Police:upOrDown(r)
+    if r == 1 then
+        self.direction = "up"
+    else
+        self.direction = "down"
+    end
+end
+
+function Police:turnAround()
+    if self.direction == "up" then
+        self.direction = "down"
+    elseif self.direction == "down" then
+        self.direction = "up"
+    elseif self.direction == "left" then
+        self.direction = "right"
+    else
+        self.direction = "left"
+    end
+end
+
 
 function Police:driveStraight(dt)
     if self.direction == "right" then
@@ -229,15 +283,7 @@ function Police:applyFriction(dt)
 end
 
 function Police:avoid(collision)
-    if self.direction == "up" then
-        self.direction = "down"
-    elseif self.direction == "down" then
-        self.direction = "up"
-    elseif self.direction == "left" then
-        self.direction = "right"
-    elseif self.direction == "right" then
-        self.direction = "left"
-    end
+    self:turnAround()
 end
 
 function Police:animate(dt)
