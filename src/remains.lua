@@ -28,6 +28,7 @@ function Remains.new(x, y, state, scaleX)
     instance:loadAssets()
 
     table.insert(ActiveRemainss, instance)
+    AddObjectToDrawQueue(instance)
 end
 
 function Remains:update(dt)

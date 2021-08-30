@@ -28,6 +28,7 @@ function Player:load()
     self.physics.fixture = love.physics.newFixture(self.physics.body, self.physics.shape)
     self.physics.body:setGravityScale(0)
     self.physics.body:setMass(30)
+    AddObjectToDrawQueue(self)
 end
 
 function Player:loadAssets()

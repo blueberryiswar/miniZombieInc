@@ -6,11 +6,13 @@ local Police = require("src/police")
 local Camera = require("src/camera")
 local Remains = require("src/remains")
 local GUI = require("src/gui")
+local objects = {}
 
 function love.load()
     Map:load()
     Player:load()
     Player:setPosition(Map.playerStart.x, Map.playerStart.y)
+    
     GUI:load()
     --print("Tile: "..Map:getTile(-Camera.x,-Camera.y,Player.x, Player.y).." Player: "..Player.x..":"..Player.y)
     
@@ -24,6 +26,7 @@ function love.update(dt)
     Remains.updateAll(dt)
     Camera:setPosition(Player.x, Player.y)
     GUI:setDebugText("Tile: "..Map:getTileDebug(0,0,Player.x, Player.y).." Player: "..Player.x..":"..Player.y)
+    table.sort(objects, orderY)
     
 end
 
@@ -31,9 +34,10 @@ function love.draw()
     Map.level:draw(-Camera.x,-Camera.y,Camera.scale,Camera.scale)
     --Map.level:draw(0,0,2,2)
     Camera:apply()
-    Player:draw()
-    Police.drawAll()
-    Remains.drawAll()
+    
+    for i,object in ipairs(objects) do
+        object:draw()
+    end
     Camera:clear()
     GUI:draw()
 end
@@ -42,6 +46,14 @@ function beginContact(a, b, collision)
     if Police.beginContact(a, b, collision) then return end
     
     Player:beginContact(a, b, collision)
+end
+
+function orderY(a,b)
+    return a.y < b.y
+end
+
+function AddObjectToDrawQueue(object)
+    table.insert(objects, object)
 end
 
 function endContact(a, b, collision)

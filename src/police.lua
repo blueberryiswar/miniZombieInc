@@ -35,6 +35,7 @@ function Police.new(x, y, Map)
     instance.physics.fixture = love.physics.newFixture(instance.physics.body, instance.physics.shape)
     instance.physics.body:setMass(25)
     table.insert(ActivePolice, instance)
+    AddObjectToDrawQueue(instance)
 end
 
 function Police:loadAssets()
